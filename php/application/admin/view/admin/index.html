@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>管理员列表</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/skx.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+<!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" 
+          rel="stylesheet" type="text/css"> -->
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="/admin/js/skins.min.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Loading Container -->
+    <div class="loading-container">
+        <div class="loading-progress">
+            <div class="rotator">
+                <div class="rotator">
+                    <div class="rotator colored">
+                        <div class="rotator">
+                            <div class="rotator colored">
+                                <div class="rotator colored"></div>
+                                <div class="rotator"></div>
+                            </div>
+                            <div class="rotator colored"></div>
+                        </div>
+                        <div class="rotator"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+    </div>
+    <!--  /Loading Container -->
+    {include file="common/header"/}
+    <!-- Main Container -->
+    {include file="common/left"/}
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="{:url('admin/index/index')}">主页</a>
+                </li>
+                <!--<li>
+                    <a href="#">More Pages</a>
+                </li>-->
+                <li class="active">管理员管理</li>
+            </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
+        <!-- Page Header -->
+        <div class="page-header position-relative">
+            <div class="header-title">
+                <h1>
+                    管理员管理
+                </h1>
+            </div>
+            <!--Header Buttons-->
+            <div class="header-buttons">
+                <a class="sidebar-toggler" href="#">
+                    <i class="fa fa-arrows-h"></i>
+                </a>
+                <a class="refresh" id="refresh-toggler" href="">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                </a>
+                <a class="fullscreen" id="fullscreen-toggler" href="#">
+                    <i class="glyphicon glyphicon-fullscreen"></i>
+                </a>
+            </div>
+            <!--Header Buttons End-->
+        </div>
+        <!-- /Page Header -->
+        <!-- Page Body -->
+        <div class="page-body">
+            <!-- Your Content Goes Here -->
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-header ">
+                        <span class="widget-caption">管理员账号列表</span>
+                        <div class="widget-buttons">
+                            <a href="#" data-toggle="maximize">
+                                <i class="fa fa-expand"></i>
+                            </a>
+                            <a href="#" data-toggle="collapse">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            <a href="#" data-toggle="dispose">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="table-toolbar">
+                            <a id="editabledatatable_new" href="{:url('admin/add')}" class="btn btn-success"><i class="fa fa-plus"></i>添加管理员</a>
+                        </div>
+                        <table class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                        账号
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <form id="submit">
+                            <tbody>
+                                {volist name="list" id="vo"}
+                                <tr class="odd">
+                                    <td class="sorting_1">{$vo.username}</td>
+                                    <td class=" ">
+                                        <a href="{:url('admin/edit',array('id'=>$vo['id']))}" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i>编辑</a>
+                                        <!--<a href="{:url('admin/deltype',array('id'=>$vo['id']))}" onclick="return confirm('确实要删除吗')?true:false" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i>删除</a>-->
+                                        {if condition="$vo['username'] neq 'admin'"}
+                                        <button type="button" attrid="{$vo.id}" onclick="return del(this)" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i>删除</button>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                            </form>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+    <!--Basic Scripts-->
+    <script src="/admin/js/jquery-2.0.3.min.js"></script>
+    <script src="/admin/js/bootstrap.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="/admin/js/beyond.min.js"></script>
+    <script src="/admin/layer/layer.js"></script>
+
+    <!--Google Analytics::Demo Only-->
+    <script>
+
+       function del(obj) {
+            var url = "{:url('admin/del')}";
+            var id = $(obj).attr("attrid");
+            var that = $(obj);
+           layer.confirm('确定删除？', {
+               btn: ['是','否'] //按钮
+           }, function(){
+               $.ajax({
+                   type : "post",
+                   url  : url,
+                   data : {"id" : id},
+                   success : function(data){
+                       if (data.status==1){
+                           layer.msg(data.msg,{icon: 1});
+                           that.parent().parent().remove();
+                       } else {
+                           layer.msg(data.msg,{icon: 5});
+                       }
+                   }
+               });
+           }, function(){
+               layer.msg('取消操作');
+           });
+        };
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-52103994-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

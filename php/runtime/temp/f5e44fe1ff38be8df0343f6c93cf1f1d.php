@@ -1,0 +1,115 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:68:"E:\wamp64\www\qwdz\public/../application/admin\view\login\login.html";i:1531894254;}*/ ?>
+﻿<!DOCTYPE html>
+<!--
+Beyond Admin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--Head-->
+<head>
+    <meta charset="utf-8" />
+    <title>管理登录</title>
+
+    <meta name="description" content="login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/skx.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <!-- <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" rel="stylesheet" type="text/css"> -->
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="/admin/js/skins.min.js"></script>
+</head>
+<!--Head Ends-->
+<!--Body-->
+<body>
+    <div class="login-container animated fadeInDown">
+        <form id="submit" method="post">
+            <div class="loginbox bg-white">
+                <div class="loginbox-title">后台登录</div>
+                <div class="loginbox-social">
+                    <div class="social-title ">Connect with Your Accounts</div>
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="text" class="form-control" placeholder="请输入用户名" name="username"/>
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="password" class="form-control" placeholder="请输入密码" name="password"/>
+                </div>
+                <div class="loginbox-textbox">
+                    <input type="text" class="form-control" placeholder="验证码" name="code" style="margin:10px 0;width:80px;float:left;"/>
+                    <img  style="margin:10px 0;height: 30px;width:120px;float:left; cursor:pointer;" src="<?php echo captcha_src(); ?>" alt="captcha" onclick="this.src='<?php echo captcha_src(); ?>?'+Math.random();" />
+                </div>
+                <div class="loginbox-submit">
+                    <input id="btn" type="button" class="btn btn-primary btn-block" value="登录">
+                </div>
+                <div class="loginbox-signup">
+                    <p>斯可馨全屋定制后台</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Basic Scripts-->
+    <script src="/admin/js/jquery-2.0.3.min.js"></script>
+    <script src="/admin/js/bootstrap.min.js"></script>
+
+    <script src="/admin/layer/layer.js"></script>
+    <!--Beyond Scripts-->
+    <!--<script src="/admin/js/beyond.js"></script>-->
+
+    <!--Google Analytics::Demo Only-->
+    <script>
+        $('#btn').click(function () {
+            var url = "<?php echo url('login/login'); ?>";
+            var fromdata = new FormData($('#submit')[0]);
+            $.ajax({
+                type : "post",
+                url  : url,
+                data : fromdata,
+                //必须false才会避开jQuery对 formdata 的默认处理XMLHttpRequest会对 formdata 进行正确的处理
+                processData : false,
+                //"application/x-www-form-urlencoded",//直接用对象接收时，必须这么写；若要发送json格式数据，可写成“application/json”，用注解@RequestBody String str接收
+                contentType : false,
+                success : function(data){
+                    if (data.status==1){
+                        self.location="<?php echo url('admin/index/index'); ?>";
+                    }
+                    if (data.status==2){
+                        layer.msg(data.msg,{icon: 5},$('input[name="code"]').val(''));
+                    }
+                    if (data.status==0){
+                        layer.msg(data.msg,{icon: 5});
+                    }
+                }
+            });
+        });
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-52103994-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+<!--Body Ends-->
+</html>

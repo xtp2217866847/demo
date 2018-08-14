@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>编辑管理员</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/skx.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300"
+              rel="stylesheet" type="text/css"> -->
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="/admin/js/skins.min.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+<!-- Loading Container -->
+<div class="loading-container">
+    <div class="loading-progress">
+        <div class="rotator">
+            <div class="rotator">
+                <div class="rotator colored">
+                    <div class="rotator">
+                        <div class="rotator colored">
+                            <div class="rotator colored"></div>
+                            <div class="rotator"></div>
+                        </div>
+                        <div class="rotator colored"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+        <div class="rotator"></div>
+    </div>
+</div>
+<!--  /Loading Container -->
+{include file="common/header"/}
+<!-- Main Container -->
+{include file="common/left"/}
+<!-- Page Content -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{:url('admin/index/index')}">主页</a>
+            </li>
+            <li>
+                <i class="fa fa-list"></i>
+                <a href="{:url('admin/index')}">管理员管理</a>
+            </li>
+            <li class="active">编辑管理员</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                管理员管理
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <!-- Your Content Goes Here -->
+        <div class="col-xs-12 col-md-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <span class="widget-caption">编辑管理员</span>
+                    <div class="widget-buttons">
+                        <a href="#" data-toggle="maximize">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                        <a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div id="horizontal-form">
+                        <form class="form-horizontal" role="form" >
+                            <input type="hidden" value="{$user.id}" id="id">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-2 control-label no-padding-right">管理员账号</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="username" name="username" value="{$user.username}" placeholder="4~8位字母数字" type="text">
+                                </div>
+                                <p class="help-block col-sm-4"><span id="namerule" ></span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-2 control-label no-padding-right">管理员密码</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="password"  name="password" value="{$user.password}" placeholder="4~8位字母数字" type="text">
+                                </div>
+                                <p class="help-block col-sm-4"><span id="pwdrule" ></span></p>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btn" class="btn btn-success">保存信息</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+<script src="/admin/js/jquery-2.0.3.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+
+<!--Beyond Scripts-->
+<script src="/admin/js/beyond.min.js"></script>
+<script src="/admin/layer/layer.js"></script>
+
+<!--Page Related Scripts-->
+
+<!--Google Analytics::Demo Only-->
+<script>
+    $('#username').blur(function () {
+        var name = $('#username').val();
+        var ret = /^[a-zA-Z0-9]{4,8}$/ ;
+        var rule = $('#namerule');
+        if (ret.test(name)){
+            rule.attr("class","glyphicon glyphicon-ok");
+            rule.attr("style","color: green");
+            rule.text("账号格式正确");
+        }else {
+            rule.attr("class","glyphicon glyphicon-remove");
+            rule.attr("style","color: red");
+            rule.text("账号格式错误！");
+        }
+    })
+
+    $('#password').blur(function () {
+        var pwd = $('#password').val();
+        var ret = /^[a-zA-Z0-9]{4,8}$/ ;
+        var rule = $('#pwdrule');
+        if (ret.test(pwd)){
+            rule.attr("class","glyphicon glyphicon-ok");
+            rule.attr("style","color: green");
+            rule.text("密码格式正确");
+        }else {
+            rule.attr("class","glyphicon glyphicon-remove");
+            rule.attr("style","color: red");
+            rule.text("密码格式错误！");
+        }
+    })
+
+    $('#btn').click(function () {
+
+        if ($('#username').val()=='') {
+            layer.msg("账号不为空",{icon: 5});
+            return false;
+        }
+        if ($('#password').val()=='') {
+            layer.msg("密码不为空",{icon: 5});
+            return false;
+        }
+        if ($('#namerule').attr('class')=='glyphicon glyphicon-remove') {
+            layer.msg($('#namerule').text(),{icon: 5});
+            return false;
+        }
+        if ($('#pwdrule').attr('class')=='glyphicon glyphicon-remove') {
+            layer.msg($('#pwdrule').text(),{icon: 5});
+            return false;
+        }
+        var url = "{:url('admin/edit')}";
+        var id = $('#id').val();
+        var username = $('#username').val();
+        var password = $('#password').val();
+        $.ajax({
+            type : "post",
+            url  : url,
+            data : {"id" : id,"username" : username,"password" : password},
+            success : function(data){
+                if (data.status==1){
+                    layer.msg(data.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = "{:url('admin/index')}";
+                    });
+                } else {
+                    layer.msg(data.msg,{icon: 5});
+                }
+            }
+        });
+    });
+
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-52103994-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+<!--  /Body -->
+</html>

@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>门店列表</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/skx.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+<!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" 
+          rel="stylesheet" type="text/css"> -->
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="/admin/js/skins.min.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Loading Container -->
+    <div class="loading-container">
+        <div class="loading-progress">
+            <div class="rotator">
+                <div class="rotator">
+                    <div class="rotator colored">
+                        <div class="rotator">
+                            <div class="rotator colored">
+                                <div class="rotator colored"></div>
+                                <div class="rotator"></div>
+                            </div>
+                            <div class="rotator colored"></div>
+                        </div>
+                        <div class="rotator"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+    </div>
+    <!--  /Loading Container -->
+    {include file="common/header"/}
+    <!-- Main Container -->
+    {include file="common/left"/}
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="{:url('admin/index/index')}">主页</a>
+                </li>
+                <!--<li>
+                    <a href="#">More Pages</a>
+                </li>-->
+                <li class="active">区域门店管理</li>
+            </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
+        <!-- Page Header -->
+        <div class="page-header position-relative">
+            <div class="header-title">
+                <h1>
+                    区域门店管理
+                </h1>
+            </div>
+            <!--Header Buttons-->
+            <div class="header-buttons">
+                <a class="sidebar-toggler" href="#">
+                    <i class="fa fa-arrows-h"></i>
+                </a>
+                <a class="refresh" id="refresh-toggler" href="">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                </a>
+                <a class="fullscreen" id="fullscreen-toggler" href="#">
+                    <i class="glyphicon glyphicon-fullscreen"></i>
+                </a>
+            </div>
+            <!--Header Buttons End-->
+        </div>
+        <!-- /Page Header -->
+        <!-- Page Body -->
+        <div class="page-body">
+            <!-- Your Content Goes Here -->
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <div class="widget-header ">
+                        <span class="widget-caption">门店编辑</span>
+                        <div class="widget-buttons">
+                            <a href="#" data-toggle="maximize">
+                                <i class="fa fa-expand"></i>
+                            </a>
+                            <a href="#" data-toggle="collapse">
+                                <i class="fa fa-minus"></i>
+                            </a>
+                            <a href="#" data-toggle="dispose">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="table-toolbar">
+                            <a id="editabledatatable_new" href="{:url('store/addstore')}" class="btn btn-success"><i class="fa fa-plus"></i>添加门店</a>
+                        </div>
+                        <table  class="table table-striped table-hover table-bordered dataTable no-footer" id="editabledatatable" aria-describedby="editabledatatable_info">
+                            <thead>
+                            <tr role="row" >
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 175px;">
+                                    <span class="text">全选</span>
+                                    <div class="checker" style="float:left;" >
+                                        <label>
+                                            <input id="all" type="checkbox" class="group-checkable">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    门店名称
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    所在城市
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    联系电话
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    联系时间
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    详细地址
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    门店logo
+                                </th>
+                                <th class="sorting" tabindex="0" aria-controls="editabledatatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Username: activate to sort column ascending" style="width: 251px;">
+                                    操作
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="vo"}
+                            <tr class="odd" >
+                                <td class="sorting_1" >
+                                    <div class="checker">
+                                        <label>
+                                            <input type="checkbox" class="checkboxes" name="check" value="{$vo->id}">
+                                            <span class="text"></span>
+                                        </label>
+                                    </div>
+                                </td>
+                                <td class="sorting_1" >{$vo->name}</td>
+                                <td class="sorting_1" >{$vo->city->name}</td>
+                                <td class="sorting_1" >{$vo->tel}</td>
+                                <td class="sorting_1" >{$vo->time}</td>
+                                <td class="sorting_1" >{$vo->address}</td>
+                                <td class="sorting_1">
+                                    <a href='#' attrlogo="{$vo->logo}" onclick="showLogo(this)"><img height="60" width="60" src="{$vo->logo}"></a>
+                                </td>
+                                <td class=" ">
+                                    <a href="{:url('store/editstore',array('id'=>$vo->id))}" class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i>编辑</a>
+                                    <!--<a href="{:url('store/delstore',array('id'=>$vo->id))}" onclick="return confirm('确实要删除吗')?true:false" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i>删除</a>-->
+                                    <button attrid="{$vo->id}" onclick="return del(this)" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i>删除</button>
+                                </td>
+                            </tr>
+                            {/volist}
+                            <tr class="odd">
+                                <td class="sorting_1" colspan="8">
+                                    <div style="text-align:left; margin-top:10px; float: left;">
+                                        <button onclick="delchecked()" style="margin-top:5px" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i>批量删除</button>
+                                    </div>
+                                    <div style="text-align:right; margin-top:10px;">
+                                        {$list->render()}
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+    <script src="/admin/js/jquery-2.0.3.min.js"></script>
+    <script src="/admin/js/bootstrap.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="/admin/js/beyond.min.js"></script>
+    <script src="/admin/layer/layer.js"></script>
+    <!--Page Related Scripts-->
+    <!--Google Analytics::Demo Only-->
+    <script>
+        $(function() {
+            $("#all").click(function(){
+                var one = $("[name='check']");
+                var allprop = $(this).prop('checked');
+                one.prop('checked',allprop);
+            })
+        });
+
+        function delchecked() {
+            var data = new Array();
+            var ck = $("input[name='check']");
+            layer.confirm('确定批量删除？', {
+                btn: ['是','否'] //按钮
+            },function (){
+                ck.each(function() {
+                    if ($(this).prop('checked')==true){
+                        data.push($(this).attr('value'));
+                    }
+                });
+                if (data.length == 0){
+                    layer.msg('无选中');
+                } else {
+                    var url = "{:url('store/dellotstore')}";
+                    $.ajax({
+                        type : "post",
+                        url  : url,
+                        data : {"data" : data},
+                        success : function(data){
+                            if (data.status==1){
+                                layer.alert(data.msg,{icon: 1}, function (){
+                                    location.reload()
+                                });
+                            } else {
+                                layer.alert(data.msg,{icon: 5},function (){
+                                    location.reload()
+                                });
+                            }
+                        }
+                    });
+                }
+            },function () {
+                layer.msg('取消操作');
+            });
+        }
+
+        function del(obj) {
+            var url = "{:url('store/delstore')}";
+            var id = $(obj).attr("attrid");
+            var that = $(obj);
+            layer.confirm('确定删除空间？', {
+                btn: ['是','否'] //按钮
+            }, function(){
+                $.ajax({
+                    type : "post",
+                    url  : url,
+                    data : {"id" : id},
+                    success : function(data){
+                        if (data.status==1){
+                            layer.msg(data.msg,{icon: 1});
+                            that.parent().parent().remove();
+                        } else {
+                            layer.msg(data.msg,{icon: 5});
+                        }
+                    }
+                });
+            }, function(){
+                layer.msg('取消操作');
+            });
+        };
+
+        function showLogo(obj) {
+            var logo = $(obj).attr("attrlogo");
+            layer.open({
+                type: 1,
+                title: false,
+                area: ['800px','800px'],
+                closeBtn: 1,
+                skin: 'layui-layer-nobg', //没有背景色
+                shadeClose: true,
+                content: '<img height="800px" width="800px" src='+logo+' >'
+            });
+        }
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-52103994-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+</body>
+<!--  /Body -->
+</html>

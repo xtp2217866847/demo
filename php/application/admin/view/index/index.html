@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>全屋定制后台主页</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/skx.png">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+<!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300" 
+          rel="stylesheet" type="text/css"> -->
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="/admin/js/skins.min.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Loading Container -->
+    <div class="loading-container">
+        <div class="loading-progress">
+            <div class="rotator">
+                <div class="rotator">
+                    <div class="rotator colored">
+                        <div class="rotator">
+                            <div class="rotator colored">
+                                <div class="rotator colored"></div>
+                                <div class="rotator"></div>
+                            </div>
+                            <div class="rotator colored"></div>
+                        </div>
+                        <div class="rotator"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+    </div>
+    <!--  /Loading Container -->
+    {include file="common/header"/}
+    <!-- Main Container -->
+    {include file="common/left"/}
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Breadcrumb -->
+        <div class="page-breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="fa fa-home"></i>
+                    <a href="{:url('admin/index/index')}">主页</a>
+                </li>
+                <!--<li>
+                    <a href="#">More Pages</a>
+                </li>-->
+            </ul>
+        </div>
+        <!-- /Page Breadcrumb -->
+        <!-- Page Header -->
+        <div class="page-header position-relative">
+            <div class="header-title">
+                <h1>
+                    欢迎登陆全屋定制后台管理
+                </h1>
+            </div>
+            <!--Header Buttons-->
+            <div class="header-buttons">
+                <a class="sidebar-toggler" href="#">
+                    <i class="fa fa-arrows-h"></i>
+                </a>
+                <a class="refresh" id="refresh-toggler" href="">
+                    <i class="glyphicon glyphicon-refresh"></i>
+                </a>
+                <a class="fullscreen" id="fullscreen-toggler" href="#">
+                    <i class="glyphicon glyphicon-fullscreen"></i>
+                </a>
+            </div>
+            <!--Header Buttons End-->
+        </div>
+        <!-- /Page Header -->
+        <!-- Page Body -->
+        <div class="page-body">
+                <div class="well with-header  with-footer">
+                    <div class="header bg-blue"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                        后台系统信息
+                    </font></font></div>
+                    <table class="table table-hover">
+                        <thead class="bordered-darkorange">
+                        <tr>
+                            <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                名称
+                            </font></font></th>
+                            <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                信息
+                            </font></font></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                公司名称
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.company}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                服务器类型
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.uname}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                服务器系统
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.system}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                服务器IP地址
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.ip}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                服务器域名
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.server}
+                            </font></font></td>
+                        </tr>
+
+                        </tbody>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                PHP版本
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.version}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                当前时间
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.time}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                最大上传限制
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.upload}
+                            </font></font></td>
+                        </tr>
+
+                        <tr>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                最大执行时间
+                            </font></font></td>
+                            <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                {$data.maxtime}
+                            </font></font></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <div class="footer">
+                        <p>全屋定制后台版本v1.0</p>
+                    </div>
+                </div>
+        </div>
+        <!-- /Page Body -->
+    </div>
+    <!-- /Page Content -->
+
+    <script src="/admin/js/jquery-2.0.3.min.js"></script>
+    <script src="/admin/js/bootstrap.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="/admin/js/beyond.min.js"></script>
+    <script src="/admin/layer/layer.js"></script>
+
+    <!--Google Analytics::Demo Only-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-52103994-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</body>
+<!--  /Body -->
+</html>

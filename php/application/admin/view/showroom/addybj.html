@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>添加样板间</title>
+
+    <meta name="description" content="blank page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/admin/img/skx.png" type="image/x-icon">
+
+    <!--Basic Styles-->
+    <link href="/admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="/admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/admin/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Fonts-->
+    <!--     <link href="http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300"
+              rel="stylesheet" type="text/css"> -->
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="/admin/css/beyond.min.css" rel="stylesheet" />
+    <link href="/admin/css/demo.min.css" rel="stylesheet" />
+    <link href="/admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="/admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+    <script src="/admin/js/skins.min.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+<!-- Loading Container -->
+<div class="loading-container">
+    <div class="loading-progress">
+        <div class="rotator">
+            <div class="rotator">
+                <div class="rotator colored">
+                    <div class="rotator">
+                        <div class="rotator colored">
+                            <div class="rotator colored"></div>
+                            <div class="rotator"></div>
+                        </div>
+                        <div class="rotator colored"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+        <div class="rotator"></div>
+    </div>
+</div>
+<!--  /Loading Container -->
+{include file="common/header"/}
+<!-- Main Container -->
+{include file="common/left"/}
+<!-- Page Content -->
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="{:url('admin/index/index')}">主页</a>
+            </li>
+            <!--<li>
+                <a href="#">More Pages</a>
+            </li>-->
+            <li class="active">样板间设置</li>
+            <li>
+                <i class="fa fa-list"></i>
+                <a href="{:url('showroom/showroomlist')}">样板间管理</a>
+            </li>
+            <li class="active">新增样板间</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                样板间管理
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <!-- Your Content Goes Here -->
+        <div class="col-xs-12 col-md-12">
+            <div class="widget">
+                <div class="widget-header">
+                    <span class="widget-caption">新增样板间</span>
+                    <div class="widget-buttons">
+                        <a href="#" data-toggle="maximize">
+                            <i class="fa fa-expand"></i>
+                        </a>
+                        <a href="#" data-toggle="collapse">
+                            <i class="fa fa-minus"></i>
+                        </a>
+                        <a href="#" data-toggle="dispose">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="widget-body">
+                    <div id="horizontal-form">
+                        <form class="form-horizontal" id="submit" role="form" enctype="multipart/form-data"><!-- method="post" action="{:url('showroom/addybj')}" >-->
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right">空间</label>
+                                <div class="col-sm-6" >
+                                    <select id="tid" name="tid">
+                                        <option>请选择</option>
+                                        {volist name="type" id="to"}
+                                        <option value="{$to.id}">{$to.tname}</option>
+                                        {/volist}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label no-padding-right">样板间名称</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="name"  name="name"  type="text">
+                                </div>
+                                <p class="help-block col-sm-4 red">* 必填</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="crowd" class="col-sm-2 control-label no-padding-right">推荐人群</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="crowd"  name="crowd"  type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="environment" class="col-sm-2 control-label no-padding-right">居室环境</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="environment"  name="environment"  type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="area" class="col-sm-2 control-label no-padding-right">占地面积</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="area"  name="area"  type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="style" class="col-sm-2 control-label no-padding-right">装修风格</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" id="style"  name="style"  type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="logo" class="col-sm-2 control-label no-padding-right">上传logo</label>
+                                <div class="col-sm-6">
+                                    <button id="logoon" type="button" class="btn btn-xs btn-blue" >上传logo</button>
+                                    <input id="logo" name="logo" type="file" data-show-caption="true" style="display:none">
+                                    <img style="padding-top: 10px" id="preview" >
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="pic" class="col-sm-2 control-label no-padding-right">其他图片</label>
+                                <div class="col-sm-6">
+                                    <button id="picon" type="button" class="btn btn-xs btn-blue" >上传多图</button>
+                                    <input id="pic" name="images[]" style="display:none" type="file" multiple data-preview-file-type="any" data-show-caption="true">
+                                    <div id="imgsview"></div>
+                                    <span id="delallpic"  style="margin-top: 10px;display: none" class='btn btn-danger btn-xs delete'>清空多图</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button id="btn" type="button" class="btn btn-success">保存信息</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+<!-- /Page Content -->
+
+<script src="/admin/js/jquery-2.0.3.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+
+<!--Beyond Scripts-->
+<script src="/admin/js/beyond.min.js"></script>
+<script src="/admin/layer/layer.js"></script>
+
+<!--Page Related Scripts-->
+<script>
+    $('#logoon').click(function () {
+        $('#logo').click();
+    });
+
+    $('#picon').click(function () {
+        $('#pic').click();
+    });
+
+    $('#btn').click(function () {
+        var url = "{:url('showroom/addybj')}";
+        var fromdata = new FormData($('#submit')[0]);
+        $.ajax({
+            type : "post",
+            url  : url,
+            data : fromdata,
+            //必须false才会避开jQuery对 formdata 的默认处理XMLHttpRequest会对 formdata 进行正确的处理
+            processData : false,
+            //"application/x-www-form-urlencoded",//直接用对象接收时，必须这么写；若要发送json格式数据，可写成“application/json”，用注解@RequestBody String str接收
+            contentType : false,
+            success : function(data){
+                if (data.status==1){
+                    layer.msg(data.msg,{icon: 1,time: 1000},function () {
+                        location.reload();
+                    });
+                } else {
+                    layer.msg(data.msg,{icon: 5});
+                }
+            }
+        });
+    });
+
+    document
+        .querySelector('#pic')
+        .addEventListener('change', function(){
+            //当没选中图片时，清除预览
+            var length = this.files.length;
+            if(length === 0){
+                $('#imgsview').empty();
+                return;
+            }else {
+                for(var i=0;i<length;i++){
+                    //实例化一个FileReader
+                    var imgid = "prepic"+i;
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        //当reader加载时，把图片的内容赋值给
+                        $('#imgsview').append("<img id='"+imgid+"' style='width:200px;height:200px;padding: 8px' src='"+e.target.result+"'>");
+                    };
+                    //读取选中的图片，并转换成dataURL格式
+                    reader.readAsDataURL(this.files[i]);
+                    /*
+                    //设置样式
+                    $("#imgid").style.width = "200px";
+                    $("#imgid").style.height = "200px";*/
+                }
+                /*$('#imgsview').css({border:"1px solid #a5b6c8",background:"#eef3f7"});*/
+            }
+            $('#delallpic').show();
+        }, false);
+
+    document
+        .querySelector('#logo')
+        .addEventListener('change', function(){
+            //当没选中图片时，清除预览
+            if(this.files.length === 0){
+                document.querySelector('#preview').src = '';
+                return;
+            }
+            //实例化一个FileReader
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                //当reader加载时，把图片的内容赋值给
+                document.querySelector('#preview').src = e.target.result;
+            };
+            //读取选中的图片，并转换成dataURL格式
+            reader.readAsDataURL(this.files[0]);
+            var img = document.getElementById("preview");
+            //设置样式
+            img.style.width = "200px";
+            img.style.height = "200px";
+            img.style.display = "block";
+        }, false);
+
+    $('#delallpic').click(function () {
+        $('#pic').val('');
+        $('#imgsview').empty();
+        $('#delallpic').hide();
+    })
+</script>
+<!--Google Analytics::Demo Only-->
+<script>
+
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-52103994-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
+<!--  /Body -->
+</html>
